@@ -124,6 +124,7 @@ export default {
       try {
         this.showGridLoader(true);
         await this.$store.dispatch("updateTask", task);
+        this.refreshTasks();
       } catch (error) {
         console.error("Error updating task status:", error);
       } finally {
