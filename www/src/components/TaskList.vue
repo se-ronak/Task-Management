@@ -1,33 +1,49 @@
 <template>
-  <v-container fluid class="my-container">
-    <v-row align="center">
-      <v-col cols="8">
-        <h2 class="primary--text">Task List ({{ tasks.length }})</h2>
-      </v-col>
-      <v-col cols="4" class="d-flex justify-end align-center">
-        <v-btn icon @click="refreshTasks" class="mr-2">
-          <v-icon>mdi-refresh</v-icon>
-        </v-btn>
-        <v-text-field
-          v-model="quickFilterText"
-          label="Search"
-          outlined
-          dense
-          class="ag-theme-alpine mt-5"
-        ></v-text-field>
+  <v-container fluid>
+    <v-row justify="center" class="mb-3">
+      <v-col cols="12">
+        <v-card class="teal darken-4 text-center white--text">
+          <v-card-text>
+            <h2 class="white--text headline mb-0">
+              Task List ({{ tasks.length }})
+            </h2>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
 
-    <ag-grid-vue
-      style="width: 100%; height: 500px"
-      class="ag-theme-alpine"
-      :columnDefs="columnDefs"
-      :rowData="tasks"
-      :quickFilterText="quickFilterText"
-      @grid-ready="onGridReady"
-      :overlayLoadingTemplate="overlayLoadingTemplate"
-      :overlayNoRowsTemplate="overlayNoRowsTemplate"
-    ></ag-grid-vue>
+    <v-card class="pa-3" outlined>
+      <v-row justify="end" align="center">
+        <v-col cols="12">
+          <v-row justify="end">
+            <v-col cols="auto">
+              <v-btn icon @click="refreshTasks" class="mt-1">
+                <v-icon>mdi-refresh</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col cols="auto">
+              <v-text-field
+                v-model="quickFilterText"
+                label="Search"
+                outlined
+                dense
+                class="ag-theme-alpine"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <ag-grid-vue
+            style="width: 100%; height: 500px"
+            class="ag-theme-alpine"
+            :columnDefs="columnDefs"
+            :rowData="tasks"
+            :quickFilterText="quickFilterText"
+            @grid-ready="onGridReady"
+            :overlayLoadingTemplate="overlayLoadingTemplate"
+            :overlayNoRowsTemplate="overlayNoRowsTemplate"
+          ></ag-grid-vue>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 
@@ -73,6 +89,7 @@ export default {
             buttonTitle: "Delete Task",
           },
           sortable: false,
+          cellStyle: { textAlign: "center" },
         },
       ],
       quickFilterText: "",
@@ -138,14 +155,16 @@ export default {
 </script>
 
 <style scoped>
-.my-container {
-  background-color: #f0f0f0;
-}
-
 .ag-overlay-loading-center {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.centered-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

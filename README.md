@@ -15,14 +15,14 @@ This project is a simple task management application built with Node.js, Vue.js,
 - **Backend:** Node.js with Express.js
 - **Database:** MongoDB
 
-### Start the Backend Server in Development Mode (server)
-cd server
-npm install
-npm run start
-npm run dev (Development with nodemon)
+# Start the Backend Server in Development Mode (server)
+- cd server
+- npm install
+- npm run start
+- npm run dev (Development with nodemon)
 
 # Start the Frontend Development Server (www)
-cd www
-npm install
-npm run serve
-npm run build (Build the frontend)
+- cd www
+- npm install
+- npm run serve
+- npm run build (Build the frontend)
